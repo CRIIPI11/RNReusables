@@ -1,28 +1,25 @@
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from "expo-font";
-import { Button, StyleSheet, View } from "react-native";
-import Countdown from "./components/Countdown/CountDown";
+import { Button, StyleSheet, Text, View } from "react-native";
+import Countdown from "./components/Countdown/UI/CountDown";
 import { useState } from "react";
+import { useCountdown } from "./components/Countdown/hooks/useCountdown";
 
 export default function App() {
-  const [visible, setVisible] = useState(false);
-
-  const [loaded] = useFonts({
-    SpaceMono: require("./assets/fonts/SpaceMono-Regular.ttf"),
-    Roboto: require("./assets/fonts/RobotoMono-Bold.ttf"),
-  });
+  const { timeLeft, start, stop, reset } = useCountdown(10);
 
   return (
     <View style={styles.container}>
-      <StatusBar style="dark" />
-      <Button title="Show Countdown" onPress={() => setVisible(true)} />
-      <Countdown
-        visible={visible}
-        onComplete={() => {
-          console.log("Countdown completed");
-          setVisible(false);
-        }}
+      <Text>Time Left: {timeLeft}</Text>
+      <View style={{ height: 20 }} />
+      <Button
+        title="Start Countdown"
+        onPress={() => start(() => console.log("Countdown finished!"))}
       />
+      <View style={{ height: 20 }} />
+      <Button title="Stop Countdown" onPress={stop} />
+      <View style={{ height: 20 }} />
+      <Button title="Reset to 15s" onPress={() => reset(15)} />
     </View>
   );
 }
