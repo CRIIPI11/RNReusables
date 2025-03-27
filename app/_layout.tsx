@@ -18,12 +18,18 @@ export default function RootLayout() {
             theme === "dark" ? DarkTheme?.primary : LightTheme?.primary,
         },
         headerTintColor: "#fff",
-        headerTitle: "",
+        headerTitleAlign: "center",
+        title: "",
       }}
     >
       <Stack.Screen name="index" />
       {/* Countdown */}
-      <Stack.Screen name="componentsPages/countdown/countdownIndex" />
+      <Stack.Screen
+        name="componentsPages/countdown/countdownIndex"
+        options={{
+          title: "Countdown",
+        }}
+      />
       <Stack.Screen name="componentsPages/countdown/ui/countdownUI" />
       <Stack.Screen name="componentsPages/countdown/hook/countdownHook" />
     </Stack>
