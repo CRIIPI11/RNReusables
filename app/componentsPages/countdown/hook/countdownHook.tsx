@@ -1,16 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
-import { useFonts } from "expo-font";
 import { Button, StyleSheet, Text, View } from "react-native";
-import Countdown from "./components/Countdown/UI/CountDown";
-import { useState } from "react";
-import { useCountdown } from "./components/Countdown/hooks/useCountdown";
+import { useCountdown } from "../../../../components/Countdown/hooks/useCountdown";
 
-export default function App() {
+export default function countdownHook() {
   const { timeLeft, start, stop, reset } = useCountdown(10);
 
   return (
     <View style={styles.container}>
-      <Text>Time Left: {timeLeft}</Text>
+      <Text style={styles.text}>Time Left: {timeLeft}</Text>
       <View style={{ height: 20 }} />
       <Button
         title="Start Countdown"
@@ -29,5 +25,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+  },
+  text: {
+    fontSize: 24,
   },
 });

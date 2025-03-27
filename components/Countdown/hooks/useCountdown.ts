@@ -1,12 +1,20 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 
+/**
+ * Hook to create a countdown timer
+ * @param initialSeconds - Initial time in seconds
+ */
 export function useCountdown(initialSeconds: number) {
   const [timeLeft, setTimeLeft] = useState(initialSeconds);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const isRunning = useRef(false);
   const onCompleteRef = useRef<(() => void) | null>(null); // Store callback reference
 
-  console.log(timeLeft);
+  /**
+   * Start the countdown
+   * @param onComplete - Callback to execute when the countdown finishes
+   * @param seconds - Optional: Start the countdown with a different time
+   */
   const start = useCallback(
     (onComplete: () => void, seconds?: number) => {
       if (isRunning.current) return;
@@ -35,6 +43,9 @@ export function useCountdown(initialSeconds: number) {
     [timeLeft]
   );
 
+  /**
+   * Stop the countdown
+   */
   const stop = useCallback(() => {
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
@@ -43,6 +54,10 @@ export function useCountdown(initialSeconds: number) {
     }
   }, []);
 
+  /**
+   * Reset the countdown
+   * @param newSeconds - New time in seconds
+   */
   const reset = useCallback(
     (newSeconds: number) => {
       stop();
