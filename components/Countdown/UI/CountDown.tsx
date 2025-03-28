@@ -87,7 +87,6 @@ const Countdown: React.FC<CountdownProps> = ({
   ...props
 }) => {
   const [timeLeft, setTimeLeft] = useState(seconds);
-  const [isRunning, setIsRunning] = useState(false);
 
   /**
    * Update the countdown timer.
@@ -96,7 +95,6 @@ const Countdown: React.FC<CountdownProps> = ({
     if (!visible) return;
 
     setTimeLeft(seconds); // Reset timer when visible changes
-    setIsRunning(true);
 
     const interval = setInterval(() => {
       setTimeLeft((prev) => {
@@ -117,7 +115,6 @@ const Countdown: React.FC<CountdownProps> = ({
    */
   const handleCancel = () => {
     if (onCancel) {
-      setIsRunning(false);
       onCancel(); // Call onCancel if provided
     } else {
       throw new Error(
@@ -146,7 +143,6 @@ const Countdown: React.FC<CountdownProps> = ({
             {timeLeft}
           </Text>
           {cancelable &&
-            isRunning &&
             (cancelableComponent ? (
               cancelableComponent
             ) : (

@@ -30,8 +30,8 @@ export default function RootLayout() {
           title: "Countdown",
         }}
       />
-      <Stack.Screen name="componentsPages/countdown/ui/countdownUI" />
-      <Stack.Screen name="componentsPages/countdown/hook/countdownHook" />
+      <Stack.Screen name="componentsPages/countdown/ui/countdownUIExample" />
+      <Stack.Screen name="componentsPages/countdown/hook/countdownHookExample" />
     </Stack>
   );
 }
