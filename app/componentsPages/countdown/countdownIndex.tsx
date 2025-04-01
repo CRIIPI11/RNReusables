@@ -6,14 +6,16 @@ export default function countdownIndex() {
   return (
     <View style={{ padding: 16 }}>
       <Pressable
-        onPress={() => router.push("componentsPages/countdown/ui/countdownUI")}
+        onPress={() =>
+          router.push("componentsPages/countdown/ui/countdownUIExample")
+        }
         style={styles.container}
       >
         <Text style={styles.text}>Countdown UI</Text>
       </Pressable>
       <Pressable
         onPress={() =>
-          router.push("componentsPages/countdown/hook/countdownHook")
+          router.push("componentsPages/countdown/hook/countdownHookExample")
         }
         style={styles.container}
       >

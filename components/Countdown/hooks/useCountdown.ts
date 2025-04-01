@@ -6,6 +6,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
  */
 export function useCountdown(initialSeconds: number) {
   const [timeLeft, setTimeLeft] = useState(initialSeconds);
+  const lastTimeLeft = useRef(initialSeconds);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const isRunning = useRef(false);
   const onCompleteRef = useRef<(() => void) | null>(null); // Store callback reference
@@ -18,8 +19,13 @@ export function useCountdown(initialSeconds: number) {
   const start = useCallback(
     (onComplete: () => void, seconds?: number) => {
       if (isRunning.current) return;
-      if (timeLeft === 0 && seconds === undefined) {
-        setTimeLeft(initialSeconds);
+      if (
+        timeLeft === 0 &&
+        seconds === undefined &&
+        lastTimeLeft.current !== null &&
+        lastTimeLeft.current !== 0
+      ) {
+        setTimeLeft(lastTimeLeft.current);
       }
 
       if (seconds !== undefined) {
@@ -44,9 +50,9 @@ export function useCountdown(initialSeconds: number) {
   );
 
   /**
-   * Stop the countdown
+   * Pause the countdown
    */
-  const stop = useCallback(() => {
+  const pause = useCallback(() => {
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
       intervalRef.current = null;
@@ -55,13 +61,29 @@ export function useCountdown(initialSeconds: number) {
   }, []);
 
   /**
+   * Stop the countdown
+   */
+  const stop = useCallback(() => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+      isRunning.current = false;
+    }
+    setTimeLeft(lastTimeLeft.current);
+  }, []);
+
+  /**
    * Reset the countdown
    * @param newSeconds - New time in seconds
    */
   const reset = useCallback(
-    (newSeconds: number) => {
-      stop();
-      setTimeLeft(newSeconds);
+    (newSeconds?: number) => {
+      if (newSeconds) {
+        setTimeLeft(newSeconds);
+        lastTimeLeft.current = newSeconds;
+      } else {
+        setTimeLeft(lastTimeLeft.current);
+      }
     },
     [stop]
   );
@@ -75,6 +97,7 @@ export function useCountdown(initialSeconds: number) {
     timeLeft,
     // methods
     start,
+    pause,
     stop,
     reset,
   };

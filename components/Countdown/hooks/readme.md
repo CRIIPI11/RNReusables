@@ -36,8 +36,9 @@ Creates a countdown timer instance with an initial duration in seconds.
 | Property   | Type                                         | Description |
 |------------|----------------------------------------------|-------------|
 | `timeLeft` | `number`                                    | The remaining time in seconds. |
-| `start`    | `(onComplete: () => void, seconds?: number) => void` | Starts the countdown. Optionally accepts a different start time and a completion callback. |
-| `stop`     | `() => void`                                | Stops the countdown immediately. |
-| `reset`    | `(newSeconds: number) => void`             | Resets the countdown to a new specified duration. |
+| `start`    | `(onComplete: () => void, seconds?: number) => void` | Starts the timer at the current timeLeft value. Requires a callback function that will be called when timeLeft reaches 0. Accepts an optional parameter "seconds" that sets the timeLeft to that value and starts the timer. |
+| `pause`    | `() => void`                                | Pauses the countdown immediately. |
+| `stop`     | `() => void`                                | Stops the countdown immediately and resets the timeLeft value to its last used state. |
+| `reset`    | `(newSeconds: number) => void`             | Resets the countdown to a new specified duration. If no new duration is provided, it resets to the last used timeLeft value. (Note: Calling the reset() function doesn't stop the timer if is currently tunning) |
 
 ---
