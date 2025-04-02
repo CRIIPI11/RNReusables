@@ -2,7 +2,7 @@ import { Button, StyleSheet, Text, View } from "react-native";
 import Countdown from "../../../../components/Countdown/UI/CountDown";
 import { useState } from "react";
 
-export default function countdownUI() {
+export default function CountdownUI() {
   const [visible, setVisible] = useState(false);
   const [time, setTime] = useState(5);
 

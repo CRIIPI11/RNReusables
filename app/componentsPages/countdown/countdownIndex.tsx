@@ -2,7 +2,7 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { router, Stack } from "expo-router";
 
-export default function countdownIndex() {
+export default function CountdownIndex() {
   return (
     <View style={{ padding: 16 }}>
       <Pressable
