@@ -54,6 +54,10 @@ export const LightTheme = Platform.select({
     link: "#1E88E5",
     focus: "#FFDE03", // Material You Focus Yellow
   },
+  macos: {},
+  native: {},
+  web: {},
+  windows: {},
 });
 
 export const DarkTheme = Platform.select({
@@ -110,4 +114,8 @@ export const DarkTheme = Platform.select({
     link: "#64B5F6",
     focus: "#FFDE03", // Material You Focus Yellow
   },
+  macos: {},
+  native: {},
+  web: {},
+  windows: {},
 });
