@@ -1,5 +1,5 @@
 import { Button, StyleSheet, Text, View } from "react-native";
-import { useCountdown } from "../../../../components/Countdown/hooks/useCountdown";
+import { useCountdown } from "@/components/Countdown/hooks/useCountdown";
 
 export default function CountdownHook() {
   const { timeLeft, start, stop, reset, pause } = useCountdown(10);

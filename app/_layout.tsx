@@ -15,7 +15,9 @@ export default function RootLayout() {
       screenOptions={{
         headerStyle: {
           backgroundColor:
-            theme === "dark" ? DarkTheme?.primary : LightTheme?.primary,
+            theme === "dark"
+              ? DarkTheme.colors.primary
+              : LightTheme.colors.primary,
         },
         headerTintColor: "#fff",
         headerTitleAlign: "center",

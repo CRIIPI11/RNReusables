@@ -19,7 +19,12 @@ const data: dataComponent[] = [
   {
     name: "Countdown",
     path: "componentsPages/countdown/countdownIndex",
-    icon: "timer",
+    icon: "timer-outline",
+  },
+  {
+    name: "Unistyles",
+    path: "componentsPages/unistyles/unistylesExample",
+    icon: "palette-outline",
   },
 ];
 
