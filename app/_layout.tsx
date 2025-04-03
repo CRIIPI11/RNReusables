@@ -34,6 +34,8 @@ export default function RootLayout() {
       />
       <Stack.Screen name="componentsPages/countdown/ui/countdownUIExample" />
       <Stack.Screen name="componentsPages/countdown/hook/countdownHookExample" />
+      <Stack.Screen name="componentsPages/unistyles/unistylesExample" />
+      <Stack.Screen name="componentsPages/text/textExample" />
     </Stack>
   );
 }

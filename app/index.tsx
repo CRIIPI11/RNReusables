@@ -26,6 +26,11 @@ const data: dataComponent[] = [
     path: "componentsPages/unistyles/unistylesExample",
     icon: "palette-outline",
   },
+  {
+    name: "Text",
+    path: "componentsPages/text/textExample",
+    icon: "note-text-outline",
+  },
 ];
 
 export default function Page() {
