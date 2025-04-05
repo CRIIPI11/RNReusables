@@ -1,6 +1,8 @@
-import { Button, StyleSheet, Text, View } from "react-native";
-import Countdown from "../../../../components/Countdown/UI/CountDown";
+import { Button, Pressable, PressableProps, View } from "react-native";
+import Countdown from "@/components/Countdown/UI/CountDown";
 import { useState } from "react";
+import Text from "@/components/Text/UI/Text";
+import { StyleSheet } from "react-native-unistyles";
 
 export default function CountdownUI() {
   const [visible, setVisible] = useState(false);
@@ -8,27 +10,20 @@ export default function CountdownUI() {
 
   return (
     <View style={styles.container}>
+      <Text fontVariant="title2" weight="bold">
+        Time: {time}
+      </Text>
       <View
         style={{
           flexDirection: "row",
-          justifyContent: "center",
-          marginVertical: 16,
+          justifyContent: "space-evenly",
+          gap: 16,
         }}
       >
         <Button
           title="Increase time +"
           onPress={() => setTime(time + 5 > 60 ? 60 : time + 5)}
         />
-        <Text
-          style={{
-            fontSize: 20,
-            textAlign: "center",
-            fontWeight: "bold",
-            marginBottom: 16,
-          }}
-        >
-          Time: {time}
-        </Text>
         <Button
           title="Decrease time -"
           onPress={() => setTime(time - 5 < 5 ? 5 : time - 5)}
@@ -41,11 +36,24 @@ export default function CountdownUI() {
         seconds={time}
         cancelable={true}
         onCancel={() => setVisible(false)}
+        // cancelableComponent={MyCustomCancelButton}
       />
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", alignItems: "center" },
-});
+const MyCustomCancelButton: React.FC<PressableProps> = (props) => (
+  <Pressable {...props}>
+    <Text style={{ color: "red" }}>Cancel Button</Text>
+  </Pressable>
+);
+
+const styles = StyleSheet.create((theme) => ({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 16,
+    backgroundColor: theme.colors.background,
+  },
+}));

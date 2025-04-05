@@ -5,7 +5,7 @@ export const LightTheme = Platform.select({
     colors: {
       primary: "#007AFF", // iOS Blue
       secondary: "#8E8E93", // iOS Gray
-      background: "#FFFFFF", // System background
+      background: "#fafafa", // System background
       surface: "#F2F2F7", // Grouped background
       text: "#000000", // Primary text
       subtext: "#3C3C43", // Secondary text
@@ -33,7 +33,7 @@ export const LightTheme = Platform.select({
     colors: {
       primary: "#6200EE", // Material 3 Primary Purple
       secondary: "#03DAC6", // Teal Accent
-      background: "#FFFFFF",
+      background: "#fafafa",
       surface: "#F5F5F5",
       text: "#000000",
       subtext: "#5D5D5D",

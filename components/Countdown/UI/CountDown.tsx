@@ -2,12 +2,13 @@ import { useState, useEffect, ComponentPropsWithoutRef } from "react";
 import {
   View,
   Text,
-  StyleSheet,
   Modal,
   Button,
   ViewStyle,
   TextStyle,
+  PressableProps,
 } from "react-native";
+import { StyleSheet } from "react-native-unistyles";
 
 interface BaseCountdownProps extends ComponentPropsWithoutRef<typeof Modal> {
   /**
@@ -35,7 +36,7 @@ interface BaseCountdownProps extends ComponentPropsWithoutRef<typeof Modal> {
   /**
    * A custom component to be rendered as the cancel button.
    */
-  cancelableComponent?: JSX.Element;
+  cancelableComponent?: React.ComponentType<PressableProps>;
   /**
    * The text color of the countdown.
    * @default "black"
@@ -77,7 +78,7 @@ const Countdown: React.FC<CountdownProps> = ({
   seconds = 5,
   cancelable,
   textColor = "black",
-  backgroundColor = "white",
+  backgroundColor = "#e0e0e0",
   cancelableComponent,
   countdownContainerStyle,
   textStyle,
@@ -87,6 +88,7 @@ const Countdown: React.FC<CountdownProps> = ({
   ...props
 }) => {
   const [timeLeft, setTimeLeft] = useState(seconds);
+  const CancelableComponent = cancelableComponent;
 
   /**
    * Update the countdown timer.
@@ -143,8 +145,8 @@ const Countdown: React.FC<CountdownProps> = ({
             {timeLeft}
           </Text>
           {cancelable &&
-            (cancelableComponent ? (
-              cancelableComponent
+            (cancelableComponent && CancelableComponent ? (
+              <CancelableComponent onPress={handleCancel} />
             ) : (
               <Button
                 title="Cancel"
@@ -158,12 +160,12 @@ const Countdown: React.FC<CountdownProps> = ({
   );
 };
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create((theme) => ({
   overlay: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    backgroundColor: theme.colors.overlay,
   },
   countdownContainer: {
     flexDirection: "column",
@@ -182,6 +184,6 @@ const styles = StyleSheet.create({
     fontFamily: "Roboto",
     marginVertical: 16,
   },
-});
+}));
 
 export default Countdown;
