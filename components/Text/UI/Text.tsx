@@ -4,7 +4,7 @@ import { PredefinedColors, TextProps } from "../utils/types";
 
 export default function Text({
   children,
-  fontVariant,
+  fontVariant = "body",
   weight,
   color,
   lightness,
@@ -20,9 +20,9 @@ export default function Text({
     );
 
   styles.useVariants({
-    fontVariant: fontVariant ?? "body",
+    fontVariant: fontVariant,
     weight: weight,
-    color: isCustomColor ? undefined : (color as PredefinedColors),
+    color: color as PredefinedColors,
     lightness: lightness,
     link: isLink,
     textAlign: textAlign,
@@ -30,7 +30,7 @@ export default function Text({
 
   const textStyle = StyleSheet.flatten([
     styles.text,
-    isCustomColor ? { color } : {},
+    isCustomColor && { color },
     style,
   ]);
 
