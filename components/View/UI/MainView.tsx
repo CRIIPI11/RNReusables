@@ -18,6 +18,7 @@ export default function MainView({
   justifyPosition,
   alignPosition,
   flex,
+  style,
   ...rest
 }: MainViewBaseProps) {
   const viewStyle = StyleSheet.flatten([
@@ -30,6 +31,7 @@ export default function MainView({
       justifyPosition,
       alignPosition
     ),
+    style,
   ]);
 
   const UniScrollview = withUnistyles(ScrollView);
