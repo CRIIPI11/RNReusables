@@ -27,6 +27,11 @@ const data: dataComponent[] = [
     path: "componentsPages/text/textExample",
     icon: "note-text-outline",
   },
+  {
+    name: "View",
+    path: "componentsPages/view/viewExample",
+    icon: "home",
+  },
 ];
 
 export default function Page() {
@@ -62,9 +67,6 @@ export default function Page() {
 }
 
 const styles = StyleSheet.create((theme) => ({
-  outContainer: {
-    flex: 1,
-  },
   container: {
     flex: 1,
     padding: 16,
