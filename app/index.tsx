@@ -32,6 +32,11 @@ const data: dataComponent[] = [
     path: "componentsPages/view/viewExample",
     icon: "home",
   },
+  {
+    name: "Timer",
+    path: "componentsPages/timer/timerExample",
+    icon: "clock",
+  },
 ];
 
 export default function Page() {
