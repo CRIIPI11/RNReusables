@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import Button from "@/components/Button/UI/Button";
 import { ContainerView, MainView } from "@/components";
-import { Icon } from "@roninoss/icons";
+import IconButton from "@/components/Button/UI/IconButton";
 
 export default function ButtonExample() {
   return (
@@ -63,6 +63,25 @@ export default function ButtonExample() {
             iconPosition="right"
           />
         </View>
+      </ContainerView>
+      <ContainerView direction="row">
+        <IconButton iconName="folder.fill" onPress={() => alert("pressed")} />
+        <IconButton
+          iconName="trash"
+          iconColor="orange"
+          iconProps={{
+            ios: {
+              size: 32,
+              symbolEffect: {
+                type: "pulse",
+                animateBy: "wholeSymbol",
+                isActive: true,
+                repeat: true,
+              },
+            },
+          }}
+          onPress={() => alert("pressed")}
+        />
       </ContainerView>
     </MainView>
   );
