@@ -40,14 +40,39 @@ export default function MainView({
     <View style={styles.outerContainer(backgroundColor)}>
       {scrollable ? (
         <UniScrollview
-          contentContainerStyle={viewStyle}
+          contentContainerStyle={[
+            styles.container(
+              padding,
+              safeArea,
+              scrollable,
+              gap,
+              backgroundColor,
+              justifyPosition,
+              alignPosition
+            ),
+            style,
+          ]}
           {...scrollProps}
           {...rest}
         >
           {children}
         </UniScrollview>
       ) : (
-        <View style={viewStyle} {...rest}>
+        <View
+          style={[
+            styles.container(
+              padding,
+              safeArea,
+              scrollable,
+              gap,
+              backgroundColor,
+              justifyPosition,
+              alignPosition
+            ),
+            style,
+          ]}
+          {...rest}
+        >
           {children}
         </View>
       )}
