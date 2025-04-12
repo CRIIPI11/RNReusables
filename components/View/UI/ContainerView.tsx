@@ -6,7 +6,7 @@ import { ContainerViewProps } from "../utils/ContainerViewTypes";
 export default function ContainerView({
   children,
   direction = "column",
-  justifyContent,
+  justifyContent = "space-evenly",
   alignItems,
   gap,
   padding,
@@ -15,21 +15,22 @@ export default function ContainerView({
   style,
   ...rest
 }: ContainerViewProps) {
-  const viewStyle = StyleSheet.flatten([
-    styles.container(direction),
-    {
-      justifyContent,
-      alignItems,
-      gap,
-      padding,
-      margin,
-      backgroundColor,
-    },
-    style,
-  ]);
-
   return (
-    <View style={viewStyle} {...rest}>
+    <View
+      style={[
+        styles.container(direction),
+        {
+          justifyContent,
+          alignItems,
+          gap,
+          padding,
+          margin,
+          backgroundColor,
+        },
+        style,
+      ]}
+      {...rest}
+    >
       {children}
     </View>
   );
