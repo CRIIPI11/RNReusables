@@ -1,6 +1,6 @@
 import Text from "@/components/Text/UI/Text";
 import { DarkTheme, LightTheme } from "@/constants/colorScheme";
-import { Icon, MaterialIconName } from "@roninoss/icons";
+import { Icon, SfSymbolIconName } from "@roninoss/icons";
 import { router } from "expo-router";
 import { FlatList, Pressable, useColorScheme, View } from "react-native";
 import { StyleSheet } from "react-native-unistyles";
@@ -8,39 +8,39 @@ import { StyleSheet } from "react-native-unistyles";
 interface dataComponent {
   name: string;
   path: string;
-  icon: MaterialIconName;
+  icon: SfSymbolIconName;
 }
 
 const data: dataComponent[] = [
   {
     name: "Countdown",
     path: "componentsPages/countdown/countdownIndex",
-    icon: "timer-outline",
+    icon: "timer",
   },
   {
     name: "Unistyles",
     path: "componentsPages/unistyles/unistylesExample",
-    icon: "palette-outline",
+    icon: "paintpalette",
   },
   {
     name: "Text",
     path: "componentsPages/text/textExample",
-    icon: "note-text-outline",
+    icon: "bold",
   },
   {
     name: "View",
     path: "componentsPages/view/viewExample",
-    icon: "home",
+    icon: "display",
   },
   {
     name: "Button",
     path: "componentsPages/button/buttonExample",
-    icon: "play-box",
+    icon: "play",
   },
   {
     name: "Timer",
     path: "componentsPages/timer/timerExample",
-    icon: "clock",
+    icon: "alarm",
   },
 ];
 
@@ -67,6 +67,7 @@ export default function Page() {
                   ? DarkTheme.colors.text
                   : LightTheme.colors.text
               }
+              namingScheme="sfSymbol"
             />
             <Text>{item.name}</Text>
           </Pressable>
