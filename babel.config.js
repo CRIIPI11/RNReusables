@@ -11,12 +11,7 @@ module.exports = function (api) {
     // other config
     plugins: [
       // other plugins
-      [
-        "react-native-unistyles/plugin",
-        {
-          debug: true,
-        },
-      ],
+      ["react-native-unistyles/plugin"],
     ],
   };
 };

@@ -33,6 +33,11 @@ const data: dataComponent[] = [
     icon: "home",
   },
   {
+    name: "Button",
+    path: "componentsPages/button/buttonExample",
+    icon: "play-box",
+  },
+  {
     name: "Timer",
     path: "componentsPages/timer/timerExample",
     icon: "clock",
