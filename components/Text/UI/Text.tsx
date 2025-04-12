@@ -28,14 +28,8 @@ export default function Text({
     textAlign: textAlign,
   });
 
-  const textStyle = StyleSheet.flatten([
-    styles.text,
-    isCustomColor && { color },
-    style,
-  ]);
-
   return (
-    <RNText style={textStyle} {...rest}>
+    <RNText style={[styles.text, isCustomColor && { color }, style]} {...rest}>
       {children}
     </RNText>
   );
@@ -51,8 +45,8 @@ const styles = StyleSheet.create((theme) => ({
             tablet: 44,
           },
           fontWeight: {
-            phone: 700,
-            tablet: 800,
+            phone: "700",
+            tablet: "800",
           },
           lineHeight: {
             phone: 41,
@@ -111,8 +105,8 @@ const styles = StyleSheet.create((theme) => ({
             tablet: 20,
           },
           fontWeight: {
-            phone: 600,
-            tablet: 700,
+            phone: "600",
+            tablet: "700",
           },
           lineHeight: {
             phone: 22,
@@ -195,13 +189,13 @@ const styles = StyleSheet.create((theme) => ({
       },
       weight: {
         light: {
-          fontWeight: 200,
+          fontWeight: "200",
         },
         medium: {
-          fontWeight: 500,
+          fontWeight: "500",
         },
         bold: {
-          fontWeight: 700,
+          fontWeight: "700",
         },
       },
       color: {
@@ -252,7 +246,7 @@ const styles = StyleSheet.create((theme) => ({
         link: true,
         styles: {
           color: "#0A84FF",
-          fontWeight: 600,
+          fontWeight: "600",
           textDecorationLine: "underline",
         },
       },
