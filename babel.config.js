@@ -12,6 +12,7 @@ module.exports = function (api) {
     plugins: [
       // other plugins
       ["react-native-unistyles/plugin"],
+      "react-native-reanimated/plugin",
     ],
   };
 };

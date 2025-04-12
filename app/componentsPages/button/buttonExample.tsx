@@ -3,6 +3,7 @@ import React from "react";
 import Button from "@/components/Button/UI/Button";
 import { ContainerView, MainView } from "@/components";
 import IconButton from "@/components/Button/UI/IconButton";
+import AnimatedIconButton from "@/components/Button/UI/AnimatedIconButton";
 
 export default function ButtonExample() {
   return (
@@ -81,6 +82,17 @@ export default function ButtonExample() {
             },
           }}
           onPress={() => alert("pressed")}
+        />
+      </ContainerView>
+      <ContainerView direction="row">
+        <AnimatedIconButton
+          iconName="calendar"
+          onPress={() => alert("pressed")}
+        />
+        <AnimatedIconButton
+          iconName="basket"
+          onPress={() => alert("pressed")}
+          iconColor="orange"
         />
       </ContainerView>
     </MainView>
