@@ -1,13 +1,22 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Button as RNButton } from "react-native";
 import React from "react";
 import Button from "@/components/Button/UI/Button";
-import { ContainerView, MainView } from "@/components";
-import IconButton from "@/components/Button/UI/IconButton";
-import AnimatedIconButton from "@/components/Button/UI/AnimatedIconButton";
+import {
+  ContainerView,
+  IconButton,
+  MainView,
+  AnimatedIconButton,
+} from "@/components";
 
 export default function ButtonExample() {
   return (
     <MainView gap={16}>
+      <RNButton
+        title="Native Button"
+        onPress={() => {
+          alert("Button Pressed");
+        }}
+      />
       <Button
         title="Disabled Button"
         onPress={() => {
