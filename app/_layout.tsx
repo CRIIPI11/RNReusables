@@ -2,13 +2,23 @@ import { Stack } from "expo-router";
 import { useColorScheme } from "react-native";
 import { DarkTheme, LightTheme } from "../constants/colorScheme";
 import { useFonts } from "expo-font";
-
+import * as SystemUI from "expo-system-ui";
+import { useEffect } from "react";
 export default function RootLayout() {
   const theme = useColorScheme();
 
   const [loaded] = useFonts({
     Roboto: require("../assets/fonts/RobotoMono-Bold.ttf"),
   });
+
+  // Set root background color using expo-system-ui
+  useEffect(() => {
+    if (theme === "dark") {
+      SystemUI.setBackgroundColorAsync(DarkTheme.colors.background ?? null);
+    } else {
+      SystemUI.setBackgroundColorAsync(LightTheme.colors.background ?? null);
+    }
+  }, [theme]);
 
   return (
     <Stack
